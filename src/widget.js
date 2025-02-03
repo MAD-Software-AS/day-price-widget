@@ -1,9 +1,6 @@
 (function () {
     // Ініціалізація віджета
     function initWidget() {
-      const container = document.createElement("div");
-      container.id = "price-widget-container";
-      document.body.appendChild(container);
   
       // Shadow DOM
       const shadowRoot = container.attachShadow({ mode: "open" });
@@ -11,14 +8,35 @@
       // HTML + CSS для віджета
       shadowRoot.innerHTML = `
         <style>
+          .widget-toggle-button {
+                    position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 1000;
+          }
+
           .widget {
-            font-family: Arial, sans-serif;
-            display: grid;
-            gap: 10px;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            padding: 20px;
-            background: #111;
-            color: white;
+        display: none;
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        width: 100%;
+        max-width: 360px;
+        height: 80vh;
+        max-height: 600px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        z-index: 1000;
           }
           .card {
             border: 1px solid #ccc;
@@ -70,13 +88,24 @@
           <button id="confirm">OK</button>
           <button id="cancel">Відмінити</button>
         </div>
+        <button class="widget-toggle-button">Open</button>
       `;
   
+              // Додати функціонал
+              widgetButton.addEventListener("click", () => {
+                widgetContainer.style.display = "block";
+              });
+            
+              shadowRoot.getElementById("widget-close-button").addEventListener("click", () => {
+                widgetContainer.style.display = "none";
+              });
+
       const widgetContainer = shadowRoot.querySelector(".widget");
       const modal = shadowRoot.querySelector(".modal");
       const confirmBtn = shadowRoot.querySelector("#confirm");
       const cancelBtn = shadowRoot.querySelector("#cancel");
   
+
       // Функція для завантаження даних з Firestore
       async function loadData() {
         // Приклад: замініть на реальні дані з Firestore
