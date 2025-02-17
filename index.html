@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-		<!-- META -->
-		<meta charset="utf-8">
-		<meta http-equiv="refresh" content="1800">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<title>Föhn Hairstudio</title>
-
-		<script src="https://mad-software-as.github.io/day-price-widget/src/widget.js"></script>
+    <link rel="stylesheet" href="src/styles/index.css">
+    <script src="./widget.min.js"></script>
   </head>
-  <body>
-    <div id="app"></div>
-  </body>
+<body>
+
+<p>Paragraph one</p>
+<p>Paragraph two</p>
+<p>Paragraph three</p>
+<div id="12121212"><span >After this paragraph is widget</span></div>
+
+<p>Paragraph four</p>
+
+<!-- Modal container -->
+
+
+  <script>
+    window.onload = () => {
+
+      widget = window.MAD({
+        chainId: 'a9XSDat68cb1pxmwPCzg',
+        env: 'dev-local',
+        targetId: '12121212',
+      });
+    }
+  </script>
+</body>
 </html>

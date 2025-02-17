@@ -1,0 +1,26 @@
+:host {
+    --primary: #d5b154;
+    --danger: #D55454;
+
+    /* Backgrounds */
+    --bg-default: #201906;
+    --bg-4: rgba(255, 255, 255, 0.04);
+    --bg-10: rgba(255, 255, 255, 0.1);
+    --bg-15: rgba(213, 177, 84, 0.15);
+    --bg-50: rgba(0, 0, 0, 0.5);
+    --bg-80: rgba(36, 28, 8, 0.8);
+
+    /* Text colors */
+    --text-color-default: white;
+    --text-color-placeholder: #776e60;
+    --text-color-80: rgba(255,255,255,0.8);
+
+    --font-size-default: 15px;
+    --font-size-24: 24px;
+
+    --line-height-default: 20px;
+    --line-height-32: 32px;
+
+    --border-radius-default: 12px;
+    --border-radius-sm: 4px;
+}
