@@ -30,14 +30,24 @@ type ChainSalonsState = {
   availabilities: {
     [key: string]: SalonAvailability[];
   };
+  termsAndConditions: ChainTermsAndConditions | null
   loading: boolean;
   error: Error | null
 };
+
+export type ChainTermsAndConditions = {
+  objectId: string
+  paragraphs: {
+    id: number
+    value: string
+  }[]
+}
 
 const INITIAL_STATE: ChainSalonsState = {
   salons: [],
   chainDayPrice: null,
   availabilities: {},
+  termsAndConditions: null,
   loading: true,
   error: null
 };
@@ -58,6 +68,7 @@ const useGetWidgetContextData = (chainId: string, setSelectedSalon: React.Dispat
         salons: responseData.salons,
         chainDayPrice: responseData.chainDayPrice,
         availabilities: responseData.availabilities,
+        termsAndConditions: responseData.termsAndConditions,
         error: null,
         loading: false,
       });

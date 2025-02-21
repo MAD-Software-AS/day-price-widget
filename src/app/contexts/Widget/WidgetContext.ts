@@ -1,4 +1,4 @@
-import { ChainDayPrice, SalonAvailability } from "./useGetWidgetContextData";
+import { ChainDayPrice, ChainTermsAndConditions, SalonAvailability } from "./useGetWidgetContextData";
 
 import { Salon } from "../../domains/Salon/Salon.model";
 import { createContext } from "react";
@@ -9,6 +9,7 @@ interface WidgetContextValues {
   availabilities?: {
     [key: string]: SalonAvailability[];
   };
+  termsAndConditions?: ChainTermsAndConditions | null
   selectedSalon?: string | null;
   setSelectedSalon?: React.Dispatch<React.SetStateAction<string | null>>;
   isBookingModalOpened: boolean;

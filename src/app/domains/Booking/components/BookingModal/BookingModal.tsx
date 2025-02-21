@@ -72,11 +72,11 @@ const BookingModal: React.FC = () => {
           salonId: salon?.objectId || selectedSalon,
           chainId: chainDayPrice?.objectId,
           salonName: salon?.name || selectedSalon,
+          workingHours:`${bookingModalContext?.startTime} - ${bookingModalContext?.endTime}`
         }),
       });
-      onCancelClick()
       alert(`Email with booking info has been sent to ${emailInputRef.current?.value}`)
-      
+      onCancelClick()
     } catch (error) {
       alert(`Error occurred during sending email: ${(error as Error).message}`);
       console.log("Error:", error);
@@ -133,7 +133,7 @@ const BookingModal: React.FC = () => {
 
         <div className="modal-body">
           <div>
-            <div className="input-label">Name:</div>
+            <div className="input-label">Navn:</div>
             <input
               ref={nameInputRef}
               onChange={onNameInputChange}
@@ -141,15 +141,15 @@ const BookingModal: React.FC = () => {
               className={`input${
                 !nameInputValidation.isDirty ? " input-error" : ""
               }`}
-              placeholder="Enter your name"
+              placeholder="Skriv inn navnet ditt"
             />
             {!nameInputValidation.isDirty ? (
-              <div className="text-error">Please enter name for booking</div>
+              <div className="text-error">Vennligst skriv inn navn for bestilling</div>
             ) : null}
           </div>
 
           <div>
-            <div className="input-label">Email:</div>
+            <div className="input-label">E-post:</div>
             <input
               ref={emailInputRef}
               onChange={onEmailInputChange}
@@ -159,18 +159,18 @@ const BookingModal: React.FC = () => {
                   ? " input-error"
                   : ""
               }`}
-              placeholder="Enter your email"
+              placeholder="Skriv inn e-postadressen din"
             />
             {!emailInputValidation.isDirty || !emailInputValidation.isValid ? (
               <div className="text-error">
                 {!emailInputValidation.isDirty
-                  ? "Please enter name for booking"
-                  : "Email is invalid"}
+                  ? "Vennligst skriv inn navn for bestilling"
+                  : "E-posten er ugyldig"}
               </div>
             ) : null}
           </div>
           <p className="modal-additional-text">
-            Du vil nå motta en sms med videre instrukser.
+            Du vil nå motta en e-post med videre instrukser.
           </p>
         </div>
         <div className="modal-actions">
@@ -180,7 +180,7 @@ const BookingModal: React.FC = () => {
             onClick={onCancelClick}
             className="widget-close-button"
           >
-            Cancel
+            Kansellere
           </button>
           <button
             disabled={loading}
@@ -197,7 +197,7 @@ const BookingModal: React.FC = () => {
                   spinnerSize={10}
                 />
               ) : null}
-              <div>Book time</div>
+              <div>Bestill tid</div>
             </div>
           </button>
         </div>

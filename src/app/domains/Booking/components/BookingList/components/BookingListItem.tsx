@@ -5,12 +5,14 @@ interface BookingListItemProps {
   date: string;
   price: number;
   originalPrice: number;
+  openTermsModal: () => void
 }
 
 const BookingListItem: React.FC<BookingListItemProps> = ({
   date,
   originalPrice,
   price,
+  openTermsModal
 }) => {
   const { setIsBookingModalOpened, setBookingModalContext, chainDayPrice } =
     useWidgetContext();
@@ -35,6 +37,7 @@ const BookingListItem: React.FC<BookingListItemProps> = ({
       <p>
         ord.pris <del>{originalPrice},-</del>
       </p>
+      <div className="terms-link" onClick={openTermsModal}>Vilkår og betingelser</div>
       <button
         className="reserve-btn"
         data-date={date}

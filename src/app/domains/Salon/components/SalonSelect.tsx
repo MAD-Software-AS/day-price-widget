@@ -11,7 +11,7 @@ const SalonSelect: React.FC = () => {
   const currentlySelected = selectedSalon ? (
     salons?.find(({ objectId }) => objectId === selectedSalon)?.name
   ) : (
-    <span className="text-disabled">No available salons</span>
+    <span className="text-disabled">Ingen tilgjengelige salonger</span>
   );
 
   const onSalonSelect = (salonId: string) => () => {

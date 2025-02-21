@@ -14,7 +14,7 @@ button {
     bottom: 20px;
     right: 20px;
     background-color: var(--primary);
-    color: var(--text-color-default);
+    color: black;
     z-index: 1000;
 }
 
@@ -155,7 +155,7 @@ button {
     margin-top: 12px;
     background: var(--primary);
     width: 100%;
-    color: var(--text-color-default);
+    color: black;
 }
 .widget-content {
     padding: 12px;
@@ -225,7 +225,7 @@ button {
 
 .save-button {
     background-color: var(--primary);
-    color: var(--text-color-default);
+    color: black;
 }
 
 .input-label {
@@ -292,6 +292,35 @@ input::placeholder {
     align-items: center;
     font-size: 24px;
     text-align: center;
+}
+
+.terms-modal {
+    font-family: 'system-ui';
+    background-color: var(--bg-default);
+
+    padding: 20px;
+    border-radius: var(--border-radius-default);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    width: 90%;
+}
+
+.terms-modal-body {
+    white-space: break-spaces;
+    overflow-y:scroll;
+    color: var(--text-color-80);
+    max-height: 500px;
+}
+
+.terms-modal-header {
+    color: var(--text-color-default);
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+    margin-bottom: 24px;
+}
+
+.terms-link {
+    color: var(--primary);
+    cursor: pointer;
 }
 
 @keyframes spinner {
