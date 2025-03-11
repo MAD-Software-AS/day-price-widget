@@ -11,7 +11,7 @@ const TermsAndConditionsModal: React.FC<TermsAndConditionsModalProps> = ({
   onTermsAndConditionsModalClose,
 }) => {
   const { termsAndConditions } = useWidgetContext();
-
+console.log('termsAndConditions:', termsAndConditions)
   return isTermsAndConditionsModalOpened ? (
     <div id="modalBackdrop" className="modal-backdrop">
       <div className="terms-modal">

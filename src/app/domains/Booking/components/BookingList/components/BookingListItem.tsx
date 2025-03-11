@@ -32,7 +32,7 @@ const BookingListItem: React.FC<BookingListItemProps> = ({
       <p className="widget-card-date">
         <strong>{date}</strong>
       </p>
-      <p>GJELDENE DAGPRIS AKKURAT NÅ:</p>
+      <p>Flexipris akkurat nå:</p>
       <p className="price">{price},-</p>
       <p>
         ord.pris <del>{originalPrice},-</del>

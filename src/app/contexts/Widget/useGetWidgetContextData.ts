@@ -64,6 +64,7 @@ const useGetWidgetContextData = (chainId: string, setSelectedSalon: React.Dispat
         }
       );
       const responseData = await reponse.json();
+      console.log('responseData:', responseData)
       setState({
         salons: responseData.salons,
         chainDayPrice: responseData.chainDayPrice,
