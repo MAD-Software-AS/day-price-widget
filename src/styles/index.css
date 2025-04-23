@@ -60,6 +60,13 @@ button {
     border-radius: var(--border-radius-default);
 }
 
+.selected-option {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 130px;
+    overflow: hidden;
+}
+
 .option.selected {
     background-color: var(--bg-15);
     color:var(--text-color-default);
