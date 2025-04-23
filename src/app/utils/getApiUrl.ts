@@ -1,7 +1,7 @@
 const getApiUrl = (env: string) => {
     switch(env){
         case 'dev':
-            return 'https://v2-ogqcbdf5ia-ew.a.run.app/v2'
+            return 'https://europe-west1-fohn-demo.cloudfunctions.net/v2'
         case 'prod':
             return 'https://us-central1-fohnjs.cloudfunctions.net/v2'
         case 'dev-local':
