@@ -1,9 +1,9 @@
 :host {
-    --primary: #d5b154;
+    --primary: #D7DB51;
     --danger: #D55454;
 
     /* Backgrounds */
-    --bg-default: #201906;
+    --bg-default: #1E3148;
     --bg-4: rgba(255, 255, 255, 0.04);
     --bg-10: rgba(255, 255, 255, 0.1);
     --bg-15: rgba(213, 177, 84, 0.15);
