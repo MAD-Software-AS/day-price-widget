@@ -6,9 +6,10 @@ import TermsAndConditionsModal from "../../../TermsAndCondtions/components/Terms
 
 interface BookingListProps {
   bookings: SalonAvailability[];
+  bookingName?: string
 }
 
-const BookingList: React.FC<BookingListProps> = ({ bookings }) => {
+const BookingList: React.FC<BookingListProps> = ({ bookings, bookingName }) => {
   const [
     isTermsAndConditionsModalVisible,
     setIsTermsAndConditionsModalVisible,
@@ -25,6 +26,7 @@ const BookingList: React.FC<BookingListProps> = ({ bookings }) => {
             key={index}
             price={discountedPrice}
             date={date}
+            bookingName={bookingName}
             openTermsModal={onModalOpen}
             originalPrice={normalPrice}
           />

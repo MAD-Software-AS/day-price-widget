@@ -75,10 +75,10 @@ const BookingModal: React.FC = () => {
           workingHours:`${bookingModalContext?.startTime} - ${bookingModalContext?.endTime}`
         }),
       });
-      alert(`Email with booking info has been sent to ${emailInputRef.current?.value}`)
+      alert(`E-post med bookinginformasjon er sendt til ${emailInputRef.current?.value}`)
       onCancelClick()
     } catch (error) {
-      alert(`Error occurred during sending email: ${(error as Error).message}`);
+      alert(`Det oppstod en feil under sending av e-post: ${(error as Error).message}`);
       console.log("Error:", error);
     } finally {
         setLoading(false);
@@ -127,7 +127,7 @@ const BookingModal: React.FC = () => {
         </div>
 
         <div className="modal-description">
-          Din Dagpris blir nå reservert, men du er først garantert ledig time
+          Din Flexipris blir nå reservert, men du er først garantert ledig time
           når timen er bestilt (neste steg).
         </div>
 

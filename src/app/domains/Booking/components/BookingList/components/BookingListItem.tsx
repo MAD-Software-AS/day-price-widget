@@ -5,6 +5,7 @@ interface BookingListItemProps {
   date: string;
   price: number;
   originalPrice: number;
+  bookingName?: string
   openTermsModal: () => void
 }
 
@@ -12,6 +13,7 @@ const BookingListItem: React.FC<BookingListItemProps> = ({
   date,
   originalPrice,
   price,
+  bookingName,
   openTermsModal
 }) => {
   const { setIsBookingModalOpened, setBookingModalContext, chainDayPrice } =
@@ -34,6 +36,7 @@ const BookingListItem: React.FC<BookingListItemProps> = ({
       </p>
       <p>Flexipris akkurat nå:</p>
       <p className="price">{price},-</p>
+      {bookingName ? <div>{bookingName}</div> : null}
       <p>
         ord.pris <del>{originalPrice},-</del>
       </p>

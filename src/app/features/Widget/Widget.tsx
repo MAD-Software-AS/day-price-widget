@@ -5,7 +5,7 @@ import SalonSelect from "../../domains/Salon/components/SalonSelect";
 import useWidgetContext from "../../contexts/Widget/useWidgetContext";
 
 const Widget: React.FC<{ isSection?: boolean }> = ({ isSection }) => {
-  const { availabilities, selectedSalon, loading } = useWidgetContext();
+  const { availabilities, selectedSalon, loading, chainDayPrice } = useWidgetContext();
 
   const onCloseClick = () => {
     document
@@ -31,7 +31,7 @@ const Widget: React.FC<{ isSection?: boolean }> = ({ isSection }) => {
             className="widget-close-button"
             onClick={onCloseClick}
           >
-            Close
+            Lukke
           </button>
         ) : null}
       </div>
@@ -41,7 +41,7 @@ const Widget: React.FC<{ isSection?: boolean }> = ({ isSection }) => {
             <Loading />
           </div>
         ) : (
-          <BookingList bookings={bookings} />
+          <BookingList bookings={bookings} bookingName={chainDayPrice?.name} />
         )}
       </div>
     </>
