@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import BookingListItem from "./components/BookingListItem";
-import { SalonAvailability } from "src/app/contexts/Widget/useGetWidgetContextData";
-import TermsAndConditionsModal from "../../../TermsAndCondtions/components/TermsAndConditionsModal/TermsAndConditionsModal";
+import BookingListItem from './components/BookingListItem'
+import { SalonAvailability } from 'src/app/contexts/Widget/useGetWidgetContextData'
+import TermsAndConditionsModal from '../../../TermsAndConditions/TermsAndConditionsModal'
 
 interface BookingListProps {
-  bookings: SalonAvailability[];
+  bookings: SalonAvailability[]
   bookingName?: string
 }
 
 const BookingList: React.FC<BookingListProps> = ({ bookings, bookingName }) => {
   const [
     isTermsAndConditionsModalVisible,
-    setIsTermsAndConditionsModalVisible,
-  ] = useState(false);
+    setIsTermsAndConditionsModalVisible
+  ] = useState(false)
 
-  const onModalOpen = () => setIsTermsAndConditionsModalVisible(true);
-  const onModalClose = () => setIsTermsAndConditionsModalVisible(false);
+  const onModalOpen = () => setIsTermsAndConditionsModalVisible(true)
+  const onModalClose = () => setIsTermsAndConditionsModalVisible(false)
 
   return (
     <>
@@ -39,7 +39,7 @@ const BookingList: React.FC<BookingListProps> = ({ bookings, bookingName }) => {
         onTermsAndConditionsModalClose={onModalClose}
       />
     </>
-  );
-};
+  )
+}
 
-export default BookingList;
+export default BookingList

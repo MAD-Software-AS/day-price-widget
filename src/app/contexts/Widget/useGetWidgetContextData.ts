@@ -1,39 +1,39 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { Salon } from "../../domains/Salon/Salon.model";
-import getApiUrl from "../../utils/getApiUrl";
+import { Salon } from '../../domains/Salon/Salon.model'
+import getApiUrl from '../../utils/getApiUrl'
 
 export type ChainDayPrice = {
-  objectId: string;
-  name: string;
-  normalPrice: number;
-  numberOfDays: number;
-  includeWeekends: boolean;
-  startTime: string;
-  endTime: string;
-  discountThreshold: number;
+  objectId: string
+  name: string
+  normalPrice: number
+  numberOfDays: number
+  includeWeekends: boolean
+  startTime: string
+  endTime: string
+  discountThreshold: number
   discountStrength: {
-    [key: string]: number;
-  };
-};
+    [key: string]: number
+  }
+}
 
 export type SalonAvailability = {
-    date: string;
-    discountPercent: number;
-    discountedPrice: number;
-    normalPrice: number;
-  }
+  date: string
+  discountPercent: number
+  discountedPrice: number
+  normalPrice: number
+}
 
 type ChainSalonsState = {
-  salons: Salon[];
-  chainDayPrice: ChainDayPrice | null;
+  salons: Salon[]
+  chainDayPrice: ChainDayPrice | null
   availabilities: {
-    [key: string]: SalonAvailability[];
-  };
+    [key: string]: SalonAvailability[]
+  }
   termsAndConditions: ChainTermsAndConditions | null
-  loading: boolean;
+  loading: boolean
   error: Error | null
-};
+}
 
 export type ChainTermsAndConditions = {
   objectId: string
@@ -50,40 +50,46 @@ const INITIAL_STATE: ChainSalonsState = {
   termsAndConditions: null,
   loading: true,
   error: null
-};
+}
 
-const useGetWidgetContextData = (chainId: string, setSelectedSalon: React.Dispatch<React.SetStateAction<string | null>>, env: string) => {
-  const [state, setState] = useState(INITIAL_STATE);
+const useGetWidgetContextData = (
+  chainId: string,
+  setSelectedSalon: React.Dispatch<React.SetStateAction<string | null>>,
+  env: string
+) => {
+  const [state, setState] = useState(INITIAL_STATE)
 
   const loadSalons = useCallback(async () => {
     try {
-      const reponse = await fetch(
+      const response = await fetch(
         `${getApiUrl(env)}/chains/availabilities/${chainId}`,
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { 'Content-Type': 'application/json' }
         }
-      );
-      const responseData = await reponse.json();
+      )
+      const responseData = await response.json()
+
       console.log('responseData:', responseData)
+
       setState({
         salons: responseData.salons,
         chainDayPrice: responseData.chainDayPrice,
         availabilities: responseData.availabilities,
         termsAndConditions: responseData.termsAndConditions,
         error: null,
-        loading: false,
-      });
+        loading: false
+      })
       setSelectedSalon((responseData.salons as Salon[])?.[0]?.objectId)
     } catch (error) {
-        setState((prev) => ({...prev, loading: false, error: error as Error}))
+      setState((prev) => ({ ...prev, loading: false, error: error as Error }))
     }
-  }, [chainId]);
+  }, [chainId])
 
   useEffect(() => {
-    loadSalons();
-  }, [loadSalons]);
+    loadSalons()
+  }, [loadSalons])
 
-  return useMemo(() => ({ ...state }), [state]);
-};
+  return useMemo(() => ({ ...state }), [state])
+}
 
-export default useGetWidgetContextData;
+export default useGetWidgetContextData

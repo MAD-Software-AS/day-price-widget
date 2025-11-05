@@ -1,3 +1,3 @@
 declare module '*.css' {
-    export default {};
+  export default {}
 }

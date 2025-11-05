@@ -1,20 +1,20 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from 'react'
 
-import Loading from "../../../../components/Loading";
-import getApiUrl from "../../../../utils/getApiUrl";
-import useWidgetContext from "../../../../contexts/Widget/useWidgetContext";
+import Loading from '../../../../components/Loading'
+import getApiUrl from '../../../../utils/getApiUrl'
+import useWidgetContext from '../../../../contexts/Widget/useWidgetContext'
 
 const BookingModal: React.FC = () => {
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const [loading, setLoading] = useState(false);
+  const nameInputRef = useRef<HTMLInputElement>(null)
+  const emailInputRef = useRef<HTMLInputElement>(null)
+  const [loading, setLoading] = useState(false)
   const [nameInputValidation, setNameInputValidation] = useState({
-    isDirty: true,
-  });
+    isDirty: true
+  })
   const [emailInputValidation, setEmailInputValidation] = useState({
     isDirty: true,
-    isValid: true,
-  });
+    isValid: true
+  })
 
   const {
     env,
@@ -24,25 +24,25 @@ const BookingModal: React.FC = () => {
     isBookingModalOpened,
     setIsBookingModalOpened,
     bookingModalContext,
-    setBookingModalContext,
-  } = useWidgetContext();
+    setBookingModalContext
+  } = useWidgetContext()
 
   const onCancelClick = () => {
-    setBookingModalContext?.(null);
-    setIsBookingModalOpened?.(false);
+    setBookingModalContext?.(null)
+    setIsBookingModalOpened?.(false)
     nameInputRef.current!.value = ''
     emailInputRef.current!.value = ''
-  };
+  }
 
   const onOkClick = async () => {
     if (!nameInputRef.current?.value) {
-      setNameInputValidation({ isDirty: false });
+      setNameInputValidation({ isDirty: false })
       return setEmailInputValidation({
         isDirty: !!emailInputRef.current?.value,
         isValid: emailInputRef.current?.value
           ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInputRef.current?.value)
-          : false,
-      });
+          : false
+      })
     }
     if (
       !emailInputRef.current?.value ||
@@ -52,16 +52,15 @@ const BookingModal: React.FC = () => {
         isDirty: !!emailInputRef.current?.value,
         isValid: emailInputRef.current?.value
           ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInputRef.current?.value)
-          : false,
-      });
+          : false
+      })
     try {
-      setLoading(true);
-      const salon =
-        salons?.find(({ objectId }) => objectId === selectedSalon)
+      setLoading(true)
+      const salon = salons?.find(({ objectId }) => objectId === selectedSalon)
       await fetch(`${getApiUrl(env)}/chains/booking`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           email: emailInputRef.current?.value,
@@ -72,39 +71,43 @@ const BookingModal: React.FC = () => {
           salonId: salon?.objectId || selectedSalon,
           chainId: chainDayPrice?.objectId,
           salonName: salon?.name || selectedSalon,
-          workingHours:`${bookingModalContext?.startTime} - ${bookingModalContext?.endTime}`
-        }),
-      });
-      alert(`E-post med bookinginformasjon er sendt til ${emailInputRef.current?.value}`)
+          workingHours: `${bookingModalContext?.startTime} - ${bookingModalContext?.endTime}`
+        })
+      })
+      alert(
+        `E-post med bookinginformasjon er sendt til ${emailInputRef.current?.value}`
+      )
       onCancelClick()
     } catch (error) {
-      alert(`Det oppstod en feil under sending av e-post: ${(error as Error).message}`);
-      console.log("Error:", error);
+      alert(
+        `Det oppstod en feil under sending av e-post: ${(error as Error).message}`
+      )
+      console.error('Error:', error)
     } finally {
-        setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const onNameInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value && nameInputValidation.isDirty)
-      return setNameInputValidation({ isDirty: false });
+      return setNameInputValidation({ isDirty: false })
     if (e.target.value && !nameInputValidation.isDirty)
-      return setNameInputValidation({ isDirty: true });
-  };
+      return setNameInputValidation({ isDirty: true })
+  }
 
   const onEmailInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value && emailInputValidation.isDirty)
-      return setEmailInputValidation((prev) => ({ ...prev, isDirty: false }));
+      return setEmailInputValidation((prev) => ({ ...prev, isDirty: false }))
     if (e.target.value && !emailInputValidation.isDirty)
       return setEmailInputValidation({
         isValid: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value),
-        isDirty: true,
-      });
+        isDirty: true
+      })
     return setEmailInputValidation((prev) => ({
       ...prev,
-      isValid: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value),
-    }));
-  };
+      isValid: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value)
+    }))
+  }
 
   return isBookingModalOpened ? (
     <div id="modalBackdrop" className="modal-backdrop">
@@ -139,12 +142,14 @@ const BookingModal: React.FC = () => {
               onChange={onNameInputChange}
               type="text"
               className={`input${
-                !nameInputValidation.isDirty ? " input-error" : ""
+                !nameInputValidation.isDirty ? ' input-error' : ''
               }`}
               placeholder="Skriv inn navnet ditt"
             />
             {!nameInputValidation.isDirty ? (
-              <div className="text-error">Vennligst skriv inn navn for bestilling</div>
+              <div className="text-error">
+                Vennligst skriv inn navn for bestilling
+              </div>
             ) : null}
           </div>
 
@@ -156,16 +161,16 @@ const BookingModal: React.FC = () => {
               type="email"
               className={`input${
                 !nameInputValidation.isDirty || !emailInputValidation.isValid
-                  ? " input-error"
-                  : ""
+                  ? ' input-error'
+                  : ''
               }`}
               placeholder="Skriv inn e-postadressen din"
             />
             {!emailInputValidation.isDirty || !emailInputValidation.isValid ? (
               <div className="text-error">
                 {!emailInputValidation.isDirty
-                  ? "Vennligst skriv inn navn for bestilling"
-                  : "E-posten er ugyldig"}
+                  ? 'Vennligst skriv inn navn for bestilling'
+                  : 'E-posten er ugyldig'}
               </div>
             ) : null}
           </div>
@@ -188,7 +193,7 @@ const BookingModal: React.FC = () => {
             onClick={onOkClick}
             className="save-button"
           >
-            <div style={{ display: "flex", gap: "4px", alignItems: "center" }}>
+            <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
               {loading ? (
                 <Loading
                   spinnerColor="var(--bg-default)"
@@ -203,7 +208,7 @@ const BookingModal: React.FC = () => {
         </div>
       </div>
     </div>
-  ) : null;
-};
+  ) : null
+}
 
-export default BookingModal;
+export default BookingModal

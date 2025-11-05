@@ -1,25 +1,26 @@
-import BookingList from "../../domains/Booking/components/BookingList/BookingList";
-import Loading from "../../components/Loading";
-import React from "react";
-import SalonSelect from "../../domains/Salon/components/SalonSelect";
-import useWidgetContext from "../../contexts/Widget/useWidgetContext";
+import BookingList from '../../domains/Booking/components/BookingList/BookingList'
+import Loading from '../../components/Loading'
+import React from 'react'
+import SalonSelect from '../../domains/Salon/components/SalonSelect'
+import useWidgetContext from '../../contexts/Widget/useWidgetContext'
 
 const Widget: React.FC<{ isSection?: boolean }> = ({ isSection }) => {
-  const { availabilities, selectedSalon, loading, chainDayPrice } = useWidgetContext();
+  const { availabilities, selectedSalon, loading, chainDayPrice } =
+    useWidgetContext()
 
   const onCloseClick = () => {
     document
-      .querySelector("mad-widget")
-      ?.shadowRoot?.getElementById("mad-widget-container")
-      ?.remove();
-  };
+      .querySelector('mad-widget')
+      ?.shadowRoot?.getElementById('mad-widget-container')
+      ?.remove()
+  }
 
-  const bookings = selectedSalon ? availabilities?.[selectedSalon] || [] : [];
+  const bookings = selectedSalon ? availabilities?.[selectedSalon] || [] : []
 
   return (
     <>
       <div
-        style={!isSection ? { padding: "0 12px" } : undefined}
+        style={!isSection ? { padding: '0 12px' } : undefined}
         className="widget-header"
       >
         <div>
@@ -35,9 +36,9 @@ const Widget: React.FC<{ isSection?: boolean }> = ({ isSection }) => {
           </button>
         ) : null}
       </div>
-      <div className={isSection ? "section-content" : "widget-content"}>
+      <div className={isSection ? 'section-content' : 'widget-content'}>
         {loading ? (
-          <div style={{ display: "flex", flex: 1, justifyContent: "center" }}>
+          <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
             <Loading />
           </div>
         ) : (
@@ -45,7 +46,7 @@ const Widget: React.FC<{ isSection?: boolean }> = ({ isSection }) => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Widget;
+export default Widget

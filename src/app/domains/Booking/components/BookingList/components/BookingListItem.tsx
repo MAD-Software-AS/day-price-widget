@@ -1,10 +1,10 @@
-import React from "react";
-import useWidgetContext from "../../../../../contexts/Widget/useWidgetContext";
+import React from 'react'
+import useWidgetContext from '../../../../../contexts/Widget/useWidgetContext'
 
 interface BookingListItemProps {
-  date: string;
-  price: number;
-  originalPrice: number;
+  date: string
+  price: number
+  originalPrice: number
   bookingName?: string
   openTermsModal: () => void
 }
@@ -17,17 +17,17 @@ const BookingListItem: React.FC<BookingListItemProps> = ({
   openTermsModal
 }) => {
   const { setIsBookingModalOpened, setBookingModalContext, chainDayPrice } =
-    useWidgetContext();
+    useWidgetContext()
 
   const onReserveClick = () => {
     setBookingModalContext?.({
       date,
       price,
       startTime: chainDayPrice!.startTime,
-      endTime: chainDayPrice!.endTime,
-    });
-    setIsBookingModalOpened?.(true);
-  };
+      endTime: chainDayPrice!.endTime
+    })
+    setIsBookingModalOpened?.(true)
+  }
 
   return (
     <div className="card">
@@ -40,7 +40,9 @@ const BookingListItem: React.FC<BookingListItemProps> = ({
       <p>
         ord.pris <del>{originalPrice},-</del>
       </p>
-      <div className="terms-link" onClick={openTermsModal}>Vilkår og betingelser</div>
+      <div className="terms-link" onClick={openTermsModal}>
+        Vilkår og betingelser
+      </div>
       <button
         className="reserve-btn"
         data-date={date}
@@ -50,7 +52,7 @@ const BookingListItem: React.FC<BookingListItemProps> = ({
         Reserver Pris
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default BookingListItem;
+export default BookingListItem

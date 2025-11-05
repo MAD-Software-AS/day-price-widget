@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import useWidgetContext from "../../../contexts/Widget/useWidgetContext";
+import useWidgetContext from '../../../contexts/Widget/useWidgetContext'
 
 const SalonSelect: React.FC = () => {
-  const [isDropdownVisibile, setIsDropdownVisibile] = useState(false);
-  const { salons, selectedSalon, setSelectedSalon } = useWidgetContext();
+  const [isDropdownVisibile, setIsDropdownVisibile] = useState(false)
+  const { salons, selectedSalon, setSelectedSalon } = useWidgetContext()
 
-  const onDropdownButtonClick = () => setIsDropdownVisibile((prev) => !prev);
+  const onDropdownButtonClick = () => setIsDropdownVisibile((prev) => !prev)
 
   const currentlySelected = selectedSalon ? (
     salons?.find(({ objectId }) => objectId === selectedSalon)?.name
   ) : (
     <span className="text-disabled">Ingen tilgjengelige salonger</span>
-  );
+  )
 
   const onSalonSelect = (salonId: string) => () => {
-    setSelectedSalon?.(salonId);
-    setIsDropdownVisibile(false);
-  };
+    setSelectedSalon?.(salonId)
+    setIsDropdownVisibile(false)
+  }
 
   return (
     <div className="custom-select">
@@ -30,7 +30,7 @@ const SalonSelect: React.FC = () => {
           {salons?.map(({ name, objectId }) => (
             <div
               className={`option${
-                objectId === selectedSalon ? " selected" : ""
+                objectId === selectedSalon ? ' selected' : ''
               }`}
               onClick={onSalonSelect(objectId)}
             >
@@ -40,7 +40,7 @@ const SalonSelect: React.FC = () => {
         </div>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default SalonSelect;
+export default SalonSelect

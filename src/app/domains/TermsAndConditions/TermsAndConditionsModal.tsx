@@ -1,24 +1,28 @@
-import React from "react";
-import useWidgetContext from "../../../../contexts/Widget/useWidgetContext";
+import React from 'react'
+import useWidgetContext from '../../contexts/Widget/useWidgetContext'
 
 interface TermsAndConditionsModalProps {
-  isTermsAndConditionsModalOpened: boolean;
-  onTermsAndConditionsModalClose: () => void;
+  isTermsAndConditionsModalOpened: boolean
+  onTermsAndConditionsModalClose: () => void
 }
 
 const TermsAndConditionsModal: React.FC<TermsAndConditionsModalProps> = ({
   isTermsAndConditionsModalOpened,
-  onTermsAndConditionsModalClose,
+  onTermsAndConditionsModalClose
 }) => {
-  const { termsAndConditions } = useWidgetContext();
-console.log('termsAndConditions:', termsAndConditions)
-  return isTermsAndConditionsModalOpened ? (
+  const { termsAndConditions } = useWidgetContext()
+
+  if (!isTermsAndConditionsModalOpened) return null
+
+  return (
     <div id="modalBackdrop" className="modal-backdrop">
       <div className="terms-modal">
-      <div className="terms-modal-header">Vilkår og betingelser</div>
+        <div className="terms-modal-header">Vilkår og betingelser</div>
         <div className="terms-modal-body">
           {termsAndConditions?.paragraphs?.map((paragraph, index) => (
-            <p style={{marginTop:0}}>{`${index + 1}. ${paragraph?.value}`}</p>
+            <p
+              style={{ marginTop: 0 }}
+            >{`${index + 1}. ${paragraph?.value}`}</p>
           ))}
         </div>
         <div className="modal-actions">
@@ -31,7 +35,7 @@ console.log('termsAndConditions:', termsAndConditions)
         </div>
       </div>
     </div>
-  ) : null;
-};
+  )
+}
 
-export default TermsAndConditionsModal;
+export default TermsAndConditionsModal
