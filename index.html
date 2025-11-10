@@ -4,15 +4,17 @@
     <link rel="stylesheet" href="src/styles/index.css">
     <script src="./widget.min.js"></script>
   </head>
-  <body>
+  <body style="margin: 0; padding: 0;">
     <script>
       window.onload = () => {
-        widget = window.MAD({
-          chainId: 'QXP0fXKmhxANYJ4WCOdG',
-          //targetId: 'id',
+        widget = window.MAD_DAY_PRICE_WIDGET({
+          chainId: 'a9XSDat68cb1pxmwPCzg',
+          targetId: 'day-price-widget',
           env: 'dev'
         });
       }
     </script>
+
+    <div id="day-price-widget"></div>
   </body>
 </html>
