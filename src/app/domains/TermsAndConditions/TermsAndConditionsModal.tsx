@@ -22,6 +22,7 @@ const TermsAndConditionsModal: React.FC<TermsAndConditionsModalProps> = ({
           {termsAndConditions?.paragraphs?.map((paragraph, index) => (
             <p
               style={{ marginTop: 0 }}
+              key={paragraph?.id || index}
             >{`${index + 1}. ${paragraph?.value}`}</p>
           ))}
         </div>
