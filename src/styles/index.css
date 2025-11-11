@@ -170,7 +170,7 @@ textarea {
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    gap: 12px;
+    gap: var(--card-gap);
 }
 
 .widget {
@@ -204,7 +204,7 @@ textarea {
     text-align: center;
     border-radius: var(--border-radius-default);
     margin-bottom: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--card-box-shadow);
     border: 1px solid var(--border-color);
 }
 
@@ -225,7 +225,7 @@ textarea {
 .widget-content {
     padding: 12px;
     overflow-y: auto;
-    gap: 12px;
+    gap: var(--card-gap);
     height: calc(100% - 88px);
 }
 
