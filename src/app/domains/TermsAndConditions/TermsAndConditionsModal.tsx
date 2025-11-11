@@ -30,7 +30,7 @@ const TermsAndConditionsModal: React.FC<TermsAndConditionsModalProps> = ({
             onClick={onTermsAndConditionsModalClose}
             className="widget-close-button"
           >
-            Close
+            Lukke
           </button>
         </div>
       </div>
