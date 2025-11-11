@@ -404,9 +404,9 @@ textarea::placeholder {
 
 .terms-modal-body {
     white-space: break-spaces;
-    overflow-y: scroll;
+    overflow-y: auto;
     color: var(--text-color-default);
-    max-height: 500px;
+    max-height: 70vh;
 }
 
 .terms-modal-header {

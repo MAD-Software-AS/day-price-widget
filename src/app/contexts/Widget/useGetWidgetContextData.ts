@@ -69,8 +69,6 @@ const useGetWidgetContextData = (
       )
       const responseData = await response.json()
 
-      console.log('responseData:', responseData)
-
       setState({
         salons: responseData.salons,
         chainDayPrice: responseData.chainDayPrice,
