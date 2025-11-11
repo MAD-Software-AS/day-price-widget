@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useRef, useState } from 'react'
 
-import Loading from '../../../../components/Loading'
 import getApiUrl from '../../../../utils/getApiUrl'
 import useWidgetContext from '../../../../contexts/Widget/useWidgetContext'
 
@@ -195,11 +194,13 @@ const BookingModal: React.FC = () => {
           >
             <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
               {loading ? (
-                <Loading
-                  spinnerColor="var(--bg-default)"
-                  backgroundColor="transparent"
-                  containerHeight={20}
-                  spinnerSize={10}
+                <div
+                  className="spinner"
+                  style={{
+                    width: '16px',
+                    height: '16px',
+                    borderWidth: '2px'
+                  }}
                 />
               ) : null}
               <div>Bestill tid</div>
