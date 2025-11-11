@@ -142,16 +142,25 @@ button {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-  border-radius: var(--border-radius-sm);
+    width: 4px;
+    height: 4px;
+    border-radius: var(--border-radius-sm);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: var(--border-radius-sm);
+    background: var(--border-color);
+    border-radius: var(--border-radius-sm);
 }
 ::-webkit-scrollbar-corner {
-  background: transparent;
+    background: transparent;
+}
+
+.scrollbar-none {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .section {
