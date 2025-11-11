@@ -159,6 +159,7 @@ button {
     min-height: 280px;
     padding: 12px 12px 0 12px;
     background: var(--bg-default);
+    color: var(--text-color-default);
 }
 
 textarea {
@@ -184,6 +185,7 @@ textarea {
     height: 80vh;
     max-height: 600px;
     background: var(--bg-default);
+    color: var(--text-color-default);
     border-radius: var(--border-radius-default);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -201,6 +203,7 @@ textarea {
 .card {
     padding: 16px;
     background: var(--bg-10);
+    color: var(--text-color-default);
     text-align: center;
     border-radius: var(--border-radius-default);
     margin-bottom: 12px;
@@ -227,6 +230,7 @@ textarea {
     overflow-y: auto;
     gap: var(--card-gap);
     height: calc(100% - 88px);
+    color: var(--text-color-default);
 }
 
 .widget-card-date {
